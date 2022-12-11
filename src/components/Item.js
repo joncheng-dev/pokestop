@@ -1,6 +1,6 @@
 import React from "react";
 
-function Product(props) {
+function Item(props) {
   return (
     <React.Fragment>
       <h3>{props.name}</h3>
@@ -12,4 +12,4 @@ function Product(props) {
   );
 }
 
-export default Product;
+export default Item;
