@@ -10,6 +10,7 @@ function ItemDetail(props) {
       <p>
         <em>{item.description}</em>
       </p>
+      <button onClick={props.onEditClick}>Edit Item Details</button>
       <button onClick={() => onDeleteClick(item.id)}>Delete Item</button>
       <hr />
     </React.Fragment>

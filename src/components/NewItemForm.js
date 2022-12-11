@@ -7,8 +7,8 @@ function NewItemForm(props) {
     event.preventDefault();
 
     props.onNewItemCreation({
-      name: event.target.itemName.value,
-      description: event.target.itemDescription.value,
+      name: event.target.name.value,
+      description: event.target.description.value,
       id: v4(),
     });
   }
