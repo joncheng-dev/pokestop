@@ -1,7 +1,7 @@
 import React from "react";
 
 function ItemDetail(props) {
-  const { item } = props;
+  const { item, onDeleteClick } = props;
   return (
     <React.Fragment>
       <h2>Item Detail</h2>
@@ -10,7 +10,7 @@ function ItemDetail(props) {
       <p>
         <em>{item.description}</em>
       </p>
-      <button onClick={props.onDeleteClick}>Delete Item</button>
+      <button onClick={() => onDeleteClick(item.id)}>Delete Item</button>
       <hr />
     </React.Fragment>
   );

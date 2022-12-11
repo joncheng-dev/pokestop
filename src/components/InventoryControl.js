@@ -40,8 +40,8 @@ class InventoryControl extends React.Component {
     });
   };
 
-  handleDeletingSelectedItem = () => {
-    const newMainItemList = this.state.mainItemList.filter((item) => item.id !== this.state.selected.id);
+  handleDeletingSelectedItem = (id) => {
+    const newMainItemList = this.state.mainItemList.filter((item) => item.id !== id);
     this.setState({
       mainItemList: newMainItemList,
       selected: null,
