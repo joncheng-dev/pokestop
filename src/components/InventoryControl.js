@@ -1,33 +1,28 @@
 import React from "react";
 import ItemList from "./ItemList";
 import NewItemForm from "./NewItemForm";
+import ItemDetail from "./ItemDetail";
 
 class InventoryControl extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       formShowing: false,
-      mainItemList: [
-        {
-          name: "Poke Ball",
-          description: "It has a simple red and white design, and it's the most known kind of Poké Ball.",
-        },
-        {
-          name: "Great Ball",
-          description: "It is slightly better than the regular Poké Ball.",
-        },
-        {
-          name: "Ultra Ball",
-          description: "It is twice as good as a regular Poké Ball.",
-        },
-      ],
+      mainItemList: [],
+      selected: null,
     };
   }
 
   handleClick = () => {
-    this.setState((prevState) => ({
-      formShowing: !prevState.formShowing,
-    }));
+    if (this.state.selected !== null) {
+      this.setState({
+        selected: null,
+      });
+    } else {
+      this.setState((prevState) => ({
+        formShowing: !prevState.formShowing,
+      }));
+    }
   };
 
   handleAddNewItemToList = (newItem) => {
@@ -38,15 +33,25 @@ class InventoryControl extends React.Component {
     });
   };
 
+  handleChangingSelectedItem = (id) => {
+    const selectedItem = this.state.mainItemList.filter((item) => item.id === id)[0];
+    this.setState({
+      selected: selectedItem,
+    });
+  };
+
   render() {
     let currentlyDisplaying = null;
     let buttonText = null;
 
-    if (this.state.formShowing) {
+    if (this.state.selected !== null) {
+      currentlyDisplaying = <ItemDetail item={this.state.selected} />;
+      buttonText = "Return to Item List";
+    } else if (this.state.formShowing) {
       currentlyDisplaying = <NewItemForm onNewItemCreation={this.handleAddNewItemToList} />;
       buttonText = "Return to Item List";
     } else {
-      currentlyDisplaying = <ItemList itemList={this.state.mainItemList} />;
+      currentlyDisplaying = <ItemList itemList={this.state.mainItemList} onItemSelection={this.handleChangingSelectedItem} />;
       buttonText = "Add New Item";
     }
 
