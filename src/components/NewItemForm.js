@@ -9,6 +9,7 @@ function NewItemForm(props) {
     props.onNewItemCreation({
       name: event.target.name.value,
       description: event.target.description.value,
+      quantity: event.target.quantity.value,
       id: v4(),
     });
   }

@@ -8,6 +8,7 @@ function Item(props) {
         <p>
           <em>{props.description}</em>
         </p>
+        <p>{props.quantity}</p>
         <hr />
       </div>
     </React.Fragment>

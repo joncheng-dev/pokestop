@@ -10,6 +10,7 @@ function ItemDetail(props) {
       <p>
         <em>{item.description}</em>
       </p>
+      <p>{item.quantity}</p>
       <button onClick={props.onEditClick}>Edit Item Details</button>
       <button onClick={() => onDeleteClick(item.id)}>Delete Item</button>
       <hr />
