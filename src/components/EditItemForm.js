@@ -1,5 +1,6 @@
 import React from "react";
 import ReusableForm from "./ReusableForm";
+import PropTypes from "prop-types";
 
 function EditItemForm(props) {
   const { item } = props;
@@ -23,5 +24,10 @@ function EditItemForm(props) {
     </React.Fragment>
   );
 }
+
+EditItemForm.propTypes = {
+  item: PropTypes.array,
+  onEditItem: PropTypes.func,
+};
 
 export default EditItemForm;

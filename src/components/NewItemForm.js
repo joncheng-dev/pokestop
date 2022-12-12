@@ -1,6 +1,7 @@
 import React from "react";
 import ReusableForm from "./ReusableForm";
 import { v4 } from "uuid";
+import PropTypes from "prop-types";
 
 function NewItemForm(props) {
   function handleNewItemFormSubmission(event) {
@@ -22,5 +23,9 @@ function NewItemForm(props) {
     </React.Fragment>
   );
 }
+
+NewItemForm.propTypes = {
+  onNewItemCreation: PropTypes.func,
+};
 
 export default NewItemForm;

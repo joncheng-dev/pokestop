@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 function ItemDetail(props) {
   const { item, onDeleteClick } = props;
@@ -17,5 +18,11 @@ function ItemDetail(props) {
     </React.Fragment>
   );
 }
+
+ItemDetail.propTypes = {
+  item: PropTypes.object,
+  onEditClick: PropTypes.func,
+  onDeleteClick: PropTypes.func,
+};
 
 export default ItemDetail;

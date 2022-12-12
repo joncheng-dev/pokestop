@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 function Item(props) {
   return (
@@ -14,5 +15,13 @@ function Item(props) {
     </React.Fragment>
   );
 }
+
+Item.propTypes = {
+  whenItemSelected: PropTypes.func,
+  name: PropTypes.string,
+  description: PropTypes.string,
+  quantity: PropTypes.number,
+  id: PropTypes.string,
+};
 
 export default Item;
