@@ -1,6 +1,6 @@
 import React from "react";
 
-function ShoppingCart() {
+function ShoppingCart(props) {
   return (
     <React.Fragment>
       <h2>Shopping Cart</h2>
