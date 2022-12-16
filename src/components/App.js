@@ -1,7 +1,6 @@
 import React from "react";
 import Header from "./Header";
 import InventoryControl from "./InventoryControl";
-import ShoppingCart from "./ShoppingCart";
 
 function App() {
   return (
@@ -9,7 +8,6 @@ function App() {
       <Header />
       <hr />
       <InventoryControl />
-      <ShoppingCart />
     </React.Fragment>
   );
 }

@@ -3,6 +3,7 @@ import ItemList from "./ItemList";
 import NewItemForm from "./NewItemForm";
 import ItemDetail from "./ItemDetail";
 import EditItemForm from "./EditItemForm";
+import ShoppingCart from "./ShoppingCart";
 
 class InventoryControl extends React.Component {
   constructor(props) {
@@ -88,8 +89,15 @@ class InventoryControl extends React.Component {
 
     return (
       <React.Fragment>
-        {currentlyDisplaying}
-        <button onClick={this.handleClick}>{buttonText}</button>
+        <div class="row">
+          <div class="column" style={{ float: "left" }}>
+            {currentlyDisplaying}
+            <button onClick={this.handleClick}>{buttonText}</button>
+          </div>
+          <div class="column" style={{ float: "right" }}>
+            <ShoppingCart />
+          </div>
+        </div>
       </React.Fragment>
     );
   }
