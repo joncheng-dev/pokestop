@@ -90,11 +90,11 @@ class InventoryControl extends React.Component {
     return (
       <React.Fragment>
         <div class="row">
-          <div class="column" style={{ float: "left" }}>
+          <div class="column" style={{ float: "left", width: "70%" }}>
             {currentlyDisplaying}
             <button onClick={this.handleClick}>{buttonText}</button>
           </div>
-          <div class="column" style={{ float: "right" }}>
+          <div class="column" style={{ float: "right", width: "30%" }}>
             <ShoppingCart />
           </div>
         </div>
