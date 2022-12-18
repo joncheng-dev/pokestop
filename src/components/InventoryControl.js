@@ -13,6 +13,7 @@ class InventoryControl extends React.Component {
       mainItemList: [],
       selected: null,
       editing: false,
+      shoppingCart: [],
     };
   }
 
@@ -64,6 +65,15 @@ class InventoryControl extends React.Component {
       mainItemList: newMainItemList,
       selected: null,
       editing: false,
+    });
+  };
+
+  handleAddItemToCart = (addedItem) => {
+    const updatedCartItems = this.state.mainItemList.filter((item) => item.id === this.state.selected.id).concat(addedItem);
+    this.setState({
+      selected: null,
+      editing: false,
+      shoppingCart: updatedCartItems,
     });
   };
 
