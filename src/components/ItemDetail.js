@@ -14,6 +14,7 @@ function ItemDetail(props) {
       <p>{item.quantity}</p>
       <button onClick={props.onEditClick}>Edit Item Details</button>
       <button onClick={() => onDeleteClick(item.id)}>Delete Item</button>
+      <button onClick={props.onRestockClick}>Restock Item</button>
       <hr />
     </React.Fragment>
   );

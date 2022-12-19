@@ -68,6 +68,13 @@ class InventoryControl extends React.Component {
     });
   };
 
+  // handleRestockClick = (updatedItem) => {
+  //   const updatedQuantityItemInList = this.state.mainItemList.filter((item) => item.id !== this.state.selected.id).concat(updatedItem);
+  //   this.setState({
+
+  //   })
+  // };
+
   handleAddItemToCart = (addedItem) => {
     const updatedCartItems = this.state.mainItemList.filter((item) => item.id === this.state.selected.id).concat(addedItem);
     this.setState({
@@ -86,7 +93,12 @@ class InventoryControl extends React.Component {
       buttonText = "Return to Item List";
     } else if (this.state.selected !== null) {
       currentlyDisplaying = (
-        <ItemDetail item={this.state.selected} onDeleteClick={this.handleDeletingSelectedItem} onEditClick={this.handleEditClick} />
+        <ItemDetail
+          item={this.state.selected}
+          onDeleteClick={this.handleDeletingSelectedItem}
+          onEditClick={this.handleEditClick}
+          onRestockClick={this.handleRestockClick}
+        />
       );
       buttonText = "Return to Item List";
     } else if (this.state.formShowing) {
