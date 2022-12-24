@@ -68,12 +68,13 @@ class InventoryControl extends React.Component {
     });
   };
 
-  // handleRestockClick = (updatedItem) => {
-  //   const updatedQuantityItemInList = this.state.mainItemList.filter((item) => item.id !== this.state.selected.id).concat(updatedItem);
-  //   this.setState({
-
-  //   })
-  // };
+  handleRestockClick = (itemToUpdate) => {
+    const updatedItem = (itemToUpdate.quantity += 1);
+    const updatedQuantityItemInList = this.state.mainItemList.filter((item) => item.id !== this.state.selected.id).concat(updatedItem);
+    this.setState({
+      mainItemList: updatedQuantityItemInList,
+    });
+  };
 
   handleAddItemToCart = (addedItem) => {
     const updatedCartItems = this.state.mainItemList.filter((item) => item.id === this.state.selected.id).concat(addedItem);
