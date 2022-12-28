@@ -70,7 +70,9 @@ class InventoryControl extends React.Component {
 
   handleRestockClick = (itemToUpdate) => {
     const updatedItem = (itemToUpdate.quantity += 1);
-    const updatedQuantityItemInList = this.state.mainItemList.filter((item) => item.id !== this.state.selected.id).concat(updatedItem);
+    const updatedQuantityItemInList = this.state.mainItemList
+      .filter((item) => item.id !== this.state.selected.id)
+      .concat((updatedItem.quantity += 1));
     this.setState({
       mainItemList: updatedQuantityItemInList,
     });
