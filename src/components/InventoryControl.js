@@ -5,6 +5,7 @@ import ItemDetail from "./ItemDetail";
 import EditItemForm from "./EditItemForm";
 import ShoppingCart from "./ShoppingCart";
 import { connect } from "react-redux";
+import PropTypes from "prop-types";
 
 class InventoryControl extends React.Component {
   constructor(props) {
@@ -47,7 +48,7 @@ class InventoryControl extends React.Component {
   };
 
   handleChangingSelectedItem = (id) => {
-    const selectedItem = this.state.mainItemList.filter((item) => item.id === id)[0];
+    const selectedItem = this.props.mainItemList[id];
     this.setState({
       selected: selectedItem,
     });
@@ -128,7 +129,7 @@ class InventoryControl extends React.Component {
       currentlyDisplaying = <NewItemForm onNewItemCreation={this.handleAddNewItemToList} />;
       buttonText = "Return to Item List";
     } else {
-      currentlyDisplaying = <ItemList itemList={this.state.mainItemList} onItemSelection={this.handleChangingSelectedItem} />;
+      currentlyDisplaying = <ItemList itemList={this.props.mainItemList} onItemSelection={this.handleChangingSelectedItem} />;
       buttonText = "Add New Item";
     }
 
@@ -148,6 +149,16 @@ class InventoryControl extends React.Component {
   }
 }
 
-InventoryControl = connect()(InventoryControl);
+InventoryControl.propTypes = {
+  mainItemList: PropTypes.object,
+};
+
+const mapStateToProps = (state) => {
+  return {
+    mainItemList: state,
+  };
+};
+
+InventoryControl = connect(mapStateToProps)(InventoryControl);
 
 export default InventoryControl;
