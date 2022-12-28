@@ -4,13 +4,13 @@ import NewItemForm from "./NewItemForm";
 import ItemDetail from "./ItemDetail";
 import EditItemForm from "./EditItemForm";
 import ShoppingCart from "./ShoppingCart";
+import { connect } from "react-redux";
 
 class InventoryControl extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       formShowing: false,
-      mainItemList: [],
       selected: null,
       editing: false,
       shoppingCart: [],
@@ -31,10 +31,18 @@ class InventoryControl extends React.Component {
   };
 
   handleAddNewItemToList = (newItem) => {
-    const newMainItemList = this.state.mainItemList.concat(newItem);
+    const { dispatch } = this.props;
+    const { name, description, quantity, id } = newItem;
+    const action = {
+      type: "ADD_ITEM",
+      name: name,
+      description: description,
+      quantity: quantity,
+      id: id,
+    };
+    dispatch(action);
     this.setState({
       formShowing: false,
-      mainItemList: newMainItemList,
     });
   };
 
@@ -46,9 +54,13 @@ class InventoryControl extends React.Component {
   };
 
   handleDeletingSelectedItem = (id) => {
-    const newMainItemList = this.state.mainItemList.filter((item) => item.id !== id);
+    const { dispatch } = this.props;
+    const action = {
+      type: "DELETE_ITEM",
+      id: id,
+    };
+    dispatch(action);
     this.setState({
-      mainItemList: newMainItemList,
       selected: null,
     });
   };
@@ -60,9 +72,17 @@ class InventoryControl extends React.Component {
   };
 
   handleEditItemInList = (editedItem) => {
-    const newMainItemList = this.state.mainItemList.filter((item) => item.id !== this.state.selected.id).concat(editedItem);
+    const { dispatch } = this.props;
+    const { name, description, quantity, id } = editedItem;
+    const action = {
+      type: "ADD_ITEM",
+      name: name,
+      description: description,
+      quantity: quantity,
+      id: id,
+    };
+    dispatch(action);
     this.setState({
-      mainItemList: newMainItemList,
       selected: null,
       editing: false,
     });
@@ -127,5 +147,7 @@ class InventoryControl extends React.Component {
     );
   }
 }
+
+InventoryControl = connect()(InventoryControl);
 
 export default InventoryControl;
